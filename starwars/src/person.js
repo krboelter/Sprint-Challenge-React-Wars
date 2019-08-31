@@ -10,6 +10,7 @@ const Person = (props) => {
 
     const Birth = styled.p`
         font-size: 18px;
+        padding: 0 10px;
     `
 
     return (

@@ -13,14 +13,24 @@ const App = () => {
   // sync up with, if any.
 
   const [data, setData] = useState([]);
+  const [planet, setPlanet] = useState();
 
   useEffect(() => {
     axios.get('https://swapi.co/api/people')
       .then(response => {
-        setData(response.data.results) 
+        setData(response.data.results)
+        const homeworld = response.data.results
+
+        homeworld.map(n => {
+          axios.get(n.homeworld)
+            .then(response => setPlanet(response.data))
+            .catch(err => console.log(err))
+        })
       })
       .catch((err) => console.log(err))
     }, [])
+
+    console.log(planet)
     
   const Main = styled.div`
     display: flex;
