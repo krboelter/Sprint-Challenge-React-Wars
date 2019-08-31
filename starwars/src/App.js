@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from "styled-components";
 import './App.css';
 import axios from "axios";
 import CreateCard from "./card";
@@ -11,7 +12,7 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios.get('https://swapi.co/api/people')
@@ -21,13 +22,18 @@ const App = () => {
       .catch((err) => console.log(err))
     }, [])
     
+  const Main = styled.div`
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  `
     
   return (
     <div className="App">
-      <h1 className="Header">Star Wars</h1>
-      {data.forEach(n => {
-        console.log(n.name)
-      })}
+    <h1 className="Header">Star Wars</h1>
+    <Main>
+      {data.map(n => {return <CreateCard name={n.name} age={n.birth_year} />})}
+    </Main>
     </div>
   );
 }

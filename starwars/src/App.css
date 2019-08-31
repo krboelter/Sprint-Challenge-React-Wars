@@ -2,7 +2,10 @@
   text-align: center;
 }
 .Header {
-  color: #443e3e;
-  text-shadow: 1px 1px 5px #fff;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 75px;
+  letter-spacing: 15px;
+  color: black;
+  text-shadow: 2px 2px 5px orange;
 }
 /* write your parent styles in here for your App.js */

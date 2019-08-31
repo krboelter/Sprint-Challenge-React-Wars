@@ -1,9 +1,21 @@
 import React from "react";
+import styled from "styled-components";
 
 const Person = (props) => {
+
+    const Header = styled.h2`
+        font-family: 'Orbitron', sans-serif;
+        padding: 5px;
+    `
+
+    const Birth = styled.p`
+        font-size: 18px;
+    `
+
     return (
         <div>
-            <h2>{props.name}</h2>
+            <Header>{props.name}</Header>
+            <Birth>Born: {props.age}</Birth>
         </div>
     )
 }
